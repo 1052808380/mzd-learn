@@ -150,35 +150,6 @@ public class SpringSessionTestController {
     }
 
 
-    /**
-     * face++ 识别人脸接口
-     *  https://console.faceplusplus.com.cn/documents/4888373
-     * @return
-     */
-    @RequestMapping("/face")
-    @ResponseBody
-    public String face() {
-        HttpClient httpclient = HttpClients.createDefault();
-        String api_key = "y04LMzDivpFzU1kEjpNOWFPdj_MTZ93k";
-        String api_secret = "bSQxIRkf45iQgxGLmwy9hx2UauQ2MukY";
-        String image_url = "https://yungu-public.oss-cn-hangzhou.aliyuncs.com/123.JPG";
-        String return_attributes = "gender,age,smiling,headpose,facequality,blur,eyestatus,emotion,ethnicity,beauty,mouthstatus,eyegaze,skinstatus";
-        try {
-            URIBuilder builder = new URIBuilder("https://api-cn.faceplusplus.com/facepp/v3/detect");
-            URI uri = builder.build();
-            HttpPost request = new HttpPost(uri);
-            StringEntity reqEntity = new StringEntity("api_key=" + api_key + "&api_secret=" + api_secret + "&image_url=" + image_url + "&return_attributes=" + return_attributes + "");
-            reqEntity.setContentType("application/x-www-form-urlencoded");
-            request.setEntity(reqEntity);
-            HttpResponse response = httpclient.execute(request);
-            HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                return EntityUtils.toString(entity);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-       return null;
-    }
+
 }
 
