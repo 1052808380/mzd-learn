@@ -1,0 +1,77 @@
+server:
+  port: 8082
+spring:
+  #spring-session开启，并且设置存放在redis
+  session:
+    store-type: redis
+    redis:
+      namespace: 'mzd:daily:spring:session'
+  devtools:
+    restart:
+      enabled: false  # 表示不重启项目
+    livereload:
+      enabled: true  # 开启热加载
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+  redis:
+    database: 0
+    host:
+    password:
+    port: 6379
+    ssl: false
+    timeout: 50000
+    jedis:
+      pool:
+        maxTotal: 200
+        maxIdle: 200
+        minIdle: 0
+        maxWaitMillis: 60000
+        timeout: 12000
+        testOnBorrow: true
+        testOnReturn: true
+        max-active: 300
+        max-wait: 2000ms
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: 'jdbc:mysql://localhost:3306/mzdproject?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=GMT%2B8'
+    username: 'root'
+    password: 'MZD123...'
+#    url: 'jdbc:mysql://?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true'
+#    username: ''
+#    password: ''
+
+    initial-size: 0
+    min-idle: 0
+    max-active: 128
+    max-wait: 60000
+    time-between-eviction-runs-millis: 20000
+    min-evictable-idle-time-millis: 300000
+    validation-query: 'SELECT ''x'''
+    test-while-idle: true
+    test-on-borrow: true
+    test-on-return: true
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: 'config,stat'
+  messages:
+    basename: message/messages
+mybatis:
+  mapperLocations: 'classpath:mapper/**/*.xml'
+
+logging:
+  level:
+    root: info
+    org.yungu: debug
+  config: 'classpath:logback-slf4j.xml'
+  file:
+    path: '../opt/logs/mzdProject'
+
+login-client:
+  rootdomain: 'mzd.org'
+  cookiename: 'SESSION'
+  rooturl: '/'
+

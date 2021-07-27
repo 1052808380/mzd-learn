@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<br/><br/><br/>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title> 牟振东个人主页</title>
+    <style type="text/css">
+        a {
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+        body {
+            text-align: center;
+            width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            background-image: url(images/mzd.JPG);
+        }
+        #right {
+        }
+        #header {
+        }
+        #contain {
+        }
+        #bottom {
+        }
+        .date {
+            font-size: 10px;
+            color: gray;
+            margin: 1px 20px;
+            text-align: left;
+        }
+        h2, h1 {
+            text-align: left;
+        }
+        /*图片的设置*/
+        #span1{
+            position: absolute;/*绝对定位*/
+            width: 10%;
+            top: 95px;/*离底下0像素*/
+            left: 150px;/*离左边0像素*/
+        }
+
+    </style>
+</head>
+
+
+<body>
+<!--				首部 header				-->
+<div id="header">
+    <h1>牟振东个人主页</h1>
+    <br/>
+    <hr align="center" width="100%"/>
+
+    <a href="">首页 </a>
+    <a href="">收藏 </a>
+    <a href="https://www.yuque.com/mouzhendong">雨雀</a>
+    <hr/>
+</div>
+<!-- 左侧 -->
+<div id="right" style="width:20%;position:absolute;right:10px;text-align:left;">
+    <hr style="width:0px;height:600px;position:absolute;right:350px;"/>
+    <p id="top" style="color:gray;font-size:40px;">学习文章</p>
+    <hr/>
+    <a href="">SpringBoot</a><br/><br/>
+    <a href="">SpringSession</a><br/><br/>
+    <a href="https://www.yuque.com/mouzhendong/kc73kx/ugi4l5">Dubbo</a><br/><br/>
+    <a href="https://www.yuque.com/mouzhendong/kc73kx/yi6zt6">Redis</a><br/><br/>
+    <a href="https://www.yuque.com/mouzhendong/kc73kx/cgg8mg">MySql</a><br/><br/>
+    <a href="https://www.yuque.com/mouzhendong/nosktk">ElasticSearch</a><br/><br/>
+    <a href="https://www.yuque.com/mouzhendong/kc73kx">DailyLearning</a><br/><br/>
+
+</div>
+<!--			中部 center				-->
+<div id="contain" style="width:70%">
+    <div id="head1">
+        <h2>1、SpringSession”</h2>
+        <p class="date">07 01 2021</p>
+        <p align="left"> @EnableRedisHttpSession：开启Session共享功能
+            <br>RedisHttpSessionConfiguration：配置类，一般不需要我们自己配置。
+            <br>主要功能是配置SessionRepositoryFilter和RedisOperationsSessionRepository这两个Bean
+            <br>SessionRepositoryFilter：拦截器
+            <br>RedisOperationsSessionRepository：可以认为是一个Redis操作的客户端，有在Redis中增删改查Session的功能
+            <br>SessionRepositoryRequestWrapper：Request的包装类，主要是重写了getSession方法
+            <br>SessionRepositoryResponseWrapper：Response的包装类。
+            <br>8、org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration
+            <br>这个实体 sessionRepository() 加载session相关信息 其中序列化看 11
+            <br>这个实体 redisMessageListenerContainer() 加载redis 相关信息
+            <br>这个实体 enableRedisKeyspaceNotificationsInitializer() 初始化redis相关信息
+            <br>主要功能是配置SessionRepositoryFilter和RedisOperationsSessionRepository这两个Bean
+            <br>1、org.springframework.session.web.http.SessionRepositoryFilter doFilterInternal
+            <br>它会过滤所有请求，将请求 HttpServletRequest 对象包装成 SessionRepositoryRequestWrapper 对象
+            <br>2、org.springframework.session.data.redis.RedisOperationsSessionRepository
+            <br>相当于redisUtils 提供session 对应redis 相关方法
+            <br>7、org.springframework.session.web.http.SessionRepositoryFilter.SessionRepositoryRequestWrapper getSession
+            <br>request.getSession() 等同于 request.getSession(true)，
+            <br>除非我们确认session一定存在或者sesson不存在时明确有创建session的需要，否则尽量使用request.getSession(false)
+            <br>getSession(boolean create)意思是返回当前reqeust中的HttpSession ，
+            <br> 如果当前reqeust中的HttpSession 为null，当create为true，就创建一个新的Session，否则返回null；
+            <br>11、org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration setDefaultRedisSerializer
+            <br>采用 JSON 序列化方式。默认情况下使用Java自带的序列化方式 可读性差
+            <br>10、org.springframework.session.web.http.DefaultCookieSerializer writeCookieValue
+            <br>这一步在将生成的session信息set进response_cookie中（其中包括F12中 doamin/path/HttpOnly相关信息）......
+
+        </p>
+
+    </div>
+    <div id="head1">
+        <h2>2、主题学习 02”</h2>
+        <p class="date">07 01 2021</p>
+        <p>......</p>
+    </div>
+
+    <div id="head1">
+        <h2>3、主题学习 03”</h2>
+        <p class="date">07 01 2021</p>
+        <img width="200px"  src="images/mzd.JPG" alt="小男孩" id="span1" />
+        <p>......</p>
+    </div>
+
+</div>
+<hr/>
+
+<!--				底部	bottom			 -->
+<div id="bottom">
+    <div class="copyRight">
+        <p>2018© 铖意. Powered by FarBox. Theme by cho</p>
+    </div>
+</div>
+</body>
+</html>
