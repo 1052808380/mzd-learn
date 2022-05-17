@@ -33,7 +33,6 @@ public class DeployStartApplication {
             logger.error("DeployStartApplication startError:{}", e);
         }
     }
-
     @Bean
     public ApplicationRunner applicationRunner(ApplicationContext ctx) {
         return args -> logger.info("=============="+ LocalTime.now()+"==============\n");
