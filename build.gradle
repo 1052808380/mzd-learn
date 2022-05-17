@@ -107,6 +107,13 @@ subprojects {
             exclude group: "org.slf4j"
             exclude group: "log4j"
         }
+
+        compile("org.yungu:user-service-api:3.7.0-RELEASE")
+        implementation 'commons-beanutils:commons-beanutils:1.9.4'
+        //http post
+        compile("org.apache.httpcomponents:fluent-hc:4.5.3")
+        compileOnly "org.projectlombok:lombok:1.16.20"
+
     }
 }
 

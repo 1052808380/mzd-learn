@@ -86,3 +86,8 @@ dubbo:
 zookeeper:
   address: 10.0.5.121:2181
 
+#zk分布式锁用
+zk:
+  url: 127.0.0.1:2181
+  timeout: 1000
+  retry: 3
