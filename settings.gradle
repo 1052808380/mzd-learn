@@ -1,1 +1,3 @@
 rootProject.name = 'mzd-learn'
+include 'mzd-demo-helloword'
+
