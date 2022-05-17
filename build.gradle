@@ -91,7 +91,22 @@ subprojects {
         //mybatis
         compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisVersion}")
         compile("mysql:mysql-connector-java")
+        // guava-retrying
 
+        // https://mvnrepository.com/artifact/com.google.code.gson/gson
+        implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+// https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-ecs
+        implementation group: 'com.aliyun', name: 'aliyun-java-sdk-ecs', version: '4.24.18'
+// https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core
+        implementation group: 'com.aliyun', name: 'aliyun-java-sdk-core', version: '4.6.0'
+
+        //dubbo
+        compile("com.alibaba:dubbo:${dubboVersion}")
+        //zookeeper
+        compile("com.101tec:zkclient:${zookpeerVersion}") {
+            exclude group: "org.slf4j"
+            exclude group: "log4j"
+        }
     }
 }
 
