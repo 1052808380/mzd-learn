@@ -1,16 +1,19 @@
 #涉及到开发和生产环境不同的配置需要提取到配置文件
 spring:
+  #log-trace
+  application:
+    name: HttpClientDemo
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: 'jdbc:mysql://publiceducationpolardb.rwlb.rds.aliyuncs.com/education?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true'
-    username: 'education_dev'
-    password: 'DEU_123ca!tion'
+    url: 'jdbc:mysql://localhost:3306/mzd?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&ssl=false'
+    username: 'root'
+    password: ''
     initial-size: 0
     min-idle: 0
     max-active: 128
     max-wait: 60000
     time-between-eviction-runs-millis: 20000
-    min-evictable-idle-time-millis: 300000
+    min-evictable-idle-time-millis: 300000mzd
     validation-query: 'SELECT ''x'''
     test-while-idle: true
     test-on-borrow: true
@@ -57,13 +60,13 @@ logging:
     root: 'INFO'
     org.yungu: 'DEBUG'
   config: 'classpath:logback-slf4j.xml'
-  path: '../opt/logs/edu'
+  path: '../logs'
 
 mybatis:
   mapper-locations: 'classpath*:mapper/**/*.xml'
 
 server:
-  port: 8280
+  port: 8899
   compression:
     enabled: true
     min-response-size: 512000
@@ -88,6 +91,6 @@ zookeeper:
 
 #zk分布式锁用
 zk:
-  url: 127.0.0.1:2181
+  url: 10.0.5.121:2181
   timeout: 1000
   retry: 3

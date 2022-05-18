@@ -6,7 +6,7 @@
     <select id="getById" resultType="java.lang.String">
 
 
-        SELECT name from user_base_info where user_id = #{userId}
+        SELECT user_name name from user_base_info where id = #{userId}
 
 
     </select>

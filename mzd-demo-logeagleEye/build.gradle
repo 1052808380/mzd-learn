@@ -2,4 +2,11 @@ bootJar.enabled = false
 jar.enabled=true
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime
+    implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.2.1-atlassian-2'
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpasyncclient', version: '4.1.5'
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
 }

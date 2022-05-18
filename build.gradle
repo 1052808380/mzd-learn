@@ -42,7 +42,7 @@ ext{
     springBootTestVersion = '2.0.7.RELEASE'
     mybatisVersion = '2.0.0'
     dubboVersion='2.6.5'
-    zookpeerVersion = '0.10'
+    zookpeerVersion = '3.5.3'
 
 }
 configurations{
@@ -102,11 +102,8 @@ subprojects {
 
         //dubbo
         compile("com.alibaba:dubbo:${dubboVersion}")
-        //zookeeper
-        compile("com.101tec:zkclient:${zookpeerVersion}") {
-            exclude group: "org.slf4j"
-            exclude group: "log4j"
-        }
+
+        compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.8.0'
 
         compile("org.yungu:user-service-api:3.7.0-RELEASE")
         implementation 'commons-beanutils:commons-beanutils:1.9.4'
