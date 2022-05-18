@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: 'jdbc:mysql://publiceducationpolardb.rwlb.rds.aliyuncs.com/education?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true'
-    username: 'education_dev'
-    password: 'DEU_123ca!tion'
+    url: '************************************************'
+    username: '**************'
+    password: '**************'
     initial-size: 0
     min-idle: 0
     max-active: 128
