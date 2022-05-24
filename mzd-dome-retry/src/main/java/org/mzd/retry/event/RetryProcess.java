@@ -42,26 +42,26 @@ public class RetryProcess {
     }
 
 
-    @Subscribe
-    public void process(RetryEvent event) throws InterruptedException {
-
-        RetryTemplate retryTemplate = new RetryTemplate() {
-            @Override
-            protected Object doBiz() throws Throwable {
-                return event.getCallback().get();
-            }
-        };
-
-
-        retryTemplate.setSleepTime(event.getSleep())
-                .setRetryCount(event.getCount());
-
-        if(event.isAsyn()) {
-            retryTemplate.submit(executorService);
-        } else {
-            retryTemplate.execute();
-        }
-    }
+//    @Subscribe
+//    public void process(RetryEvent event) throws InterruptedException {
+//
+//        RetryTemplate retryTemplate = new RetryTemplate() {
+//            @Override
+//            protected Object doBiz() throws Throwable {
+//                return event.getCallback().get();
+//            }
+//        };
+//
+//
+//        retryTemplate.setSleepTime(event.getSleep())
+//                .setRetryCount(event.getCount());
+//
+//        if(event.isAsyn()) {
+//            retryTemplate.submit(executorService);
+//        } else {
+//            retryTemplate.execute();
+//        }
+//    }
 
 
 }

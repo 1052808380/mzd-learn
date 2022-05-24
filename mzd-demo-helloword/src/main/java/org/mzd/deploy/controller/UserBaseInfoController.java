@@ -1,6 +1,12 @@
 package org.mzd.deploy.controller;
 
 
+import com.github.promeg.pinyinhelper.Pinyin;
+import net.sourceforge.pinyin4j.PinyinHelper;
+import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
+import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
+import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import org.apache.commons.lang3.StringUtils;
 import org.mzd.deploy.config.RedisUtil;
 import org.mzd.deploy.dao.UserBaseInfoMapper;
@@ -27,6 +33,93 @@ public class UserBaseInfoController {
 
     @Resource
     private RedisUtil redisUtil;
+
+    public static void main(String[] args) {
+//        String pingYin = toPinyin("胡彦熖");
+        System.out.println("");
+
+
+        String 胡彦熖 = Pinyin.toPinyin("胡彦熖", null);
+
+
+        System.out.println("");
+
+    }
+
+    /**
+     * 将字符串中的中文转化为拼音,英文字符不变
+     *
+     * @param inputString 汉字
+     * @return
+     */
+    public static String getPingYin(String inputString) {
+        logger.info("-------getPingYin----------inputString={}", inputString);
+        StringBuilder output = new StringBuilder();
+        try {
+            HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+            format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+            format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+            format.setVCharType(HanyuPinyinVCharType.WITH_V);
+
+            if (inputString != null && inputString.length() > 0
+                    && !"null".equals(inputString)) {
+                char[] input = inputString.trim().toCharArray();
+                try {
+                    for (int i = 0; i < input.length; i++) {
+                        if (Character.toString(input[i]).matches("[\\u4E00-\\u9FA5]+")) {
+                            String[] temp = PinyinHelper.toHanyuPinyinStringArray(input[i], format);
+                            if(null==temp||temp.length==0){
+                                output.append(input[i]);
+                            }else {
+                                output.append(temp[0]);
+                            }
+                        } else {
+                            output.append(input[i]);
+                        }
+                    }
+                } catch (Exception e) {
+                    logger.error("getPingYin={}", e);
+                }
+            } else {
+                return "*";
+            }
+        } catch (Exception e) {
+            logger.error("getPingYin={}", e);
+        }
+        return output.toString();
+    }
+
+    /**
+     * 汉字转为拼音
+     * @param chinese
+     * @return
+     */
+    public static String toPinyin(String chinese){
+        String pinyinStr = "";
+        char[] newChar = chinese.toCharArray();
+        HanyuPinyinOutputFormat defaultFormat = new HanyuPinyinOutputFormat();
+        defaultFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
+        defaultFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
+        for (int i = 0; i < newChar.length; i++) {
+            if (newChar[i] > 128) {
+                try {
+                    pinyinStr += PinyinHelper.toHanyuPinyinStringArray(newChar[i], defaultFormat)[0];
+                } catch (Exception e) {
+                    pinyinStr = pinyinStr +  newChar[i];
+                }
+            }else{
+                pinyinStr += newChar[i];
+            }
+        }
+        return pinyinStr;
+    }
+
+
+
+
+
+
+
 
 
     @RequestMapping(value = "/getName", method = RequestMethod.GET)

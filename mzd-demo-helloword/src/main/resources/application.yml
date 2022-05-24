@@ -67,6 +67,8 @@ mybatis:
 
 server:
   port: 8899
+  servlet:
+    context-path: /demo
   compression:
     enabled: true
     min-response-size: 512000

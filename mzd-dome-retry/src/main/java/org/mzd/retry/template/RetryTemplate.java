@@ -1,6 +1,8 @@
 package org.mzd.retry.template;
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -15,8 +17,8 @@ import java.util.concurrent.ExecutorService;
  * <p>
  * Created by yihui on 2017/8/30.
  */
-@Slf4j
 public abstract class RetryTemplate {
+    private static final Logger logger = LoggerFactory.getLogger(RetryTemplate.class);
 
     private static final int DEFAULT_RETRY_COUNT = 3;
 
@@ -67,7 +69,7 @@ public abstract class RetryTemplate {
             try {
                 return doBiz();
             } catch (Throwable  e) {
-                log.error("业务执行出现异常，e: {}", e);
+                logger.error("业务执行出现异常，e: {}", e);
                 Thread.sleep(sleepTime);
             }
         }

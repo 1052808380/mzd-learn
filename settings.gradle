@@ -3,4 +3,5 @@ include 'mzd-demo-helloword'
 include 'mzd-dome-retry'
 include 'mzd-demo-logeagleEye'
 include 'mzd-demo-zookeeper'
+include 'mzd-demo-websocket'
 

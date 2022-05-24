@@ -3,12 +3,14 @@ package org.mzd.retry.custom;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * @author: zhendong.mzd
  * @description:
  * @date: 2022/5/18 下午7:24
  */
+@Component
 public class CustomRetry {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomRetry.class);

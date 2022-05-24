@@ -5,4 +5,5 @@ dependencies {
     compile project(":mzd-dome-retry")
     compile project(":mzd-demo-logeagleEye")
     compile project(":mzd-demo-zookeeper")
+    compile project(":mzd-demo-websocket")
 }

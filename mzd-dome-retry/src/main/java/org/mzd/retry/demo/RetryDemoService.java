@@ -30,23 +30,23 @@ public class RetryDemoService {
 
 
 
-    public void genSmallNum() throws Exception {
-        RetryEvent retryEvent = new RetryEvent();
-        retryEvent.setSleep(10);
-        retryEvent.setCount(5);
-        retryEvent.setAsyn(false);
-        retryEvent.setCallback(() -> {
-            int a = genNum();
-            System.out.println("now num: " + a);
-            if (a > 3) {
-                throw new RuntimeException("num bigger than 3");
-            }
-
-            return a;
-        });
-
-        RetryProcess.post(retryEvent);
-    }
+//    public void genSmallNum() throws Exception {
+//        RetryEvent retryEvent = new RetryEvent();
+//        retryEvent.setSleep(10);
+//        retryEvent.setCount(5);
+//        retryEvent.setAsyn(false);
+//        retryEvent.setCallback(() -> {
+//            int a = genNum();
+//            System.out.println("now num: " + a);
+//            if (a > 3) {
+//                throw new RuntimeException("num bigger than 3");
+//            }
+//
+//            return a;
+//        });
+//
+//        RetryProcess.post(retryEvent);
+//    }
 
 
 }

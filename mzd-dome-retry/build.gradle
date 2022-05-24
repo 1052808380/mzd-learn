@@ -21,6 +21,15 @@ dependencies {
     implementation group: 'org.springframework', name: 'spring-core', version: '5.3.20'
 // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+    compile('com.belerweb:pinyin4j:2.5.1')
+    compile("net.sf.json-lib:json-lib:2.4:jdk15")
+
+    compile 'com.github.promeg:tinypinyin:2.0.3'
+
+    compile 'com.github.promeg:tinypinyin-lexicons-java-cncity:2.0.3'
+
+
+
 
 
 }
